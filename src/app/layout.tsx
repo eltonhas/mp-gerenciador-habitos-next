@@ -2,6 +2,7 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 import { Dosis } from 'next/font/google'
+import { Toaster } from 'react-hot-toast'
 
 import { Header } from '@/components/header'
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         className={`${dosis.className} flex h-screen w-full flex-col bg-neutral-900 text-white`}
       >
         <Header />
+        <Toaster />
         {children}
       </body>
     </html>

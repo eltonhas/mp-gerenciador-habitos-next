@@ -1,8 +1,9 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function Header() {
   return (
-    <header className="my-8 flex items-end justify-center gap-2">
+    <Link href={'/'} className="my-8 flex items-end justify-center gap-2">
       <Image
         src={'/checked.svg'}
         alt="checked"
@@ -14,6 +15,6 @@ export function Header() {
         meta.
         <span className="font-light text-green-400">diária</span>
       </h1>
-    </header>
+    </Link>
   )
 }
