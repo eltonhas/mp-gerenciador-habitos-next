@@ -29,8 +29,7 @@ export function DayButton({
   const dayString = dayLabel.toISOString()
 
   const streakDates = Object.entries(streak)
-  console.log(streakDates)
-  console.log(dayString)
+
   const dayStatus: (string | boolean)[] = []
   streakDates.forEach((date) => {
     const dayStringFormat = dayString.split('T')[0]

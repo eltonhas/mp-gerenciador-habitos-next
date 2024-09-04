@@ -15,8 +15,6 @@ export function HabitWeek({ title, infos }: habitProps) {
 
   const currentWeekDates = getCurrentWeekDates()
 
-  console.log(currentWeekDates)
-
   return (
     <div className="flex w-[80%] flex-col gap-2">
       <div className="flex justify-between">
