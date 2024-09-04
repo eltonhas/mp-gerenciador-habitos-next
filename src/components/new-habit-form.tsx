@@ -9,9 +9,7 @@ export function NewHabitForm() {
     const result = await createNewHabit(formData)
 
     if (!result?.success) {
-      if (result?.message) {
-        toast.error(result?.message[0])
-      }
+      toast.error(result?.message as string)
     }
   }
   return (

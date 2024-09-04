@@ -1,31 +1,46 @@
-import { Trash2 } from 'lucide-react'
+import dayjs from 'dayjs'
 import Link from 'next/link'
 
+import { habitProps } from '@/@types/habit'
 import { days } from '@/utils/days'
+import { getCurrentWeekDates } from '@/utils/get-current-week-dates'
 
+import { ButtonDelete } from './button-delete'
 import { DayButton } from './day-button'
 
-interface HabitWeekProps {
-  title: string
-}
+export function HabitWeek({ title, infos }: habitProps) {
+  const toDay = dayjs()
 
-export function HabitWeek({ title }: HabitWeekProps) {
+  const dayWeek = toDay.day()
+
+  const currentWeekDates = getCurrentWeekDates()
+
+  console.log(currentWeekDates)
+
   return (
     <div className="flex w-[80%] flex-col gap-2">
       <div className="flex justify-between">
-        <Link href={'/habit/teste'} className="font-light text-slate-200">
+        <Link
+          href={`/habit/${infos.habitSlug}`}
+          className="font-light text-slate-200"
+        >
           {title}
         </Link>
-        <button className="transition-opacity hover:opacity-80">
-          <Trash2 className="text-red-500" />
-        </button>
+        <ButtonDelete habit={title} />
       </div>
       <Link
-        href={'/habit/teste'}
+        href={`/habit/${title}`}
         className="flex justify-around rounded bg-neutral-800 px-2 pb-4 pt-2"
       >
-        {days.map((day) => (
-          <DayButton day={day} key={day} disable={true} />
+        {days.map((day, i) => (
+          <DayButton
+            label={day}
+            day={currentWeekDates[i]}
+            key={day}
+            disable={true}
+            actualDay={i === dayWeek}
+            streak={infos.streak}
+          />
         ))}
       </Link>
     </div>
